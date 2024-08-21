@@ -31,9 +31,10 @@ const LoginForm = () => {
 
         }),
         onSubmit: async values => {
-            console.log(values);
 
             const res = await loginUser(values).unwrap();
+            // console.log(res);
+            
             if(res && res.success == true){
                 dispatch(setUserInfo(res));
                 navigate('/');

@@ -77,4 +77,21 @@ export default class Auth {
       next(error);
     }
   }
+
+  async logout(req, res, next) {
+
+    console.log('logout was called');
+    
+    try {
+      res
+        .cookie("auth_token", null, { expiresIn: Date().now })
+        .json({
+          success: true,
+          token,
+          message: "You are logged out"
+        });
+    } catch (error) {
+      next(error);
+    }
+  }
 }

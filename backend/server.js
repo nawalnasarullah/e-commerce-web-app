@@ -12,6 +12,7 @@ import cors from "cors";
 
 const corsOption = {
     origin: "http://localhost:5173",
+    credentials: true
 }
 
 const app = express();
@@ -23,7 +24,7 @@ cloudinary.config({
 });
 
 
-app.use(cors());
+app.use(cors(corsOption));
 
 app.use(cookieParser());
 // app.use(bodyParser.json());
@@ -45,6 +46,6 @@ app.use('*', (req, res, next)=>{
 app.use(error)
 
 app.listen(process.env.PORT, ()=>{
-    console.log('Server is running on port 8000');
+    console.log(`Server is running on port ${process.env.PORT}`);
 })
 

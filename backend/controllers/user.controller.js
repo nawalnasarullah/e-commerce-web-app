@@ -36,11 +36,25 @@ export default class userController {
     try{
       const user = await User.findById(id);
       res.json({
-        message:"single user caleed",
+        message:"single user called",
         user
       });
     }catch(error){
       next(error);
+    }
+  }
+
+  async getMe(req, res, next) {
+    const id = req.user.id;
+    console.log(id);
+    try{
+      const user = await User.findById(id);
+      res.json({
+        user,
+        success: true
+      });
+    }catch(error){
+      next(new Error(error));
     }
   }
 

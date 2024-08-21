@@ -4,14 +4,16 @@ const {actions, reducer} = createSlice({
     name: "auth",
     initialState: {
         user: null,
-        token: null
+        isAuthenticated: false
     },
     reducers: {
         setUserInfo: (state, action) => {
-            state.user = action.payload.user
-            state.token = action.payload.token 
+            state.user = action.payload
+            state.isAuthenticated = true
         },
         clearUserInfo: (state, action) => {
+            state.user = null
+            state.isAuthenticated = false
         }
     }
 });
